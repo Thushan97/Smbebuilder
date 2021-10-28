@@ -1,10 +1,11 @@
+/* eslint-disable */
 /**
  * External Dependencies
  */
 import classnames from 'classnames/dedupe';
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link ,withRouter} from 'react-router-dom';
 import { Spinner } from 'reactstrap';
 
 /**
@@ -14,6 +15,9 @@ import Icon from '../../components/icon';
 import { isValidEmail } from '../../utils';
 
 import { updateAuth as actionUpdateAuth } from '../../actions';
+import { addToast as actionAddToast } from "../../actions";
+
+import api from "../../services/api";
 
 /**
  * Component
@@ -98,6 +102,7 @@ class Content extends Component {
     maybeLogin() {
         const {
             updateAuth,
+            addToast
         } = this.props;
 
         if ( this.state.loading ) {
@@ -115,15 +120,23 @@ class Content extends Component {
             return;
         }
 
-        this.setState( {
-            loading: true,
-        }, () => {
-            setTimeout( () => {
-                updateAuth( {
-                    token: 'fake-token',
-                } );
-            }, 600 );
-        } );
+        this.setState({ loading: true });
+        api.auth.register({email: this.state.email, name: this.state.name, password: this.state.password})
+            .then((res) => {
+                this.setState({ loading: false });
+                if (!res.data.status) {
+                    addToast({ title: "Error", content: res.data.msg, time: new Date(), duration: 6000, color: "danger" });
+                }
+                else {
+                    addToast({ title: "Successful", content: res.data.msg, time: new Date(), duration: 6000 });
+                    setTimeout(() => { window.open('/sign-in', '_self') }, 6000);
+                }
+            })
+            .catch((err) => {
+                this.setState({ loading: false });
+                return;
+            });
+        this.setState({ loading: false });
     }
 
     render() {
@@ -235,7 +248,7 @@ class Content extends Component {
                                 ) : '' }
                             </button>
                         </div>
-                        <div className="col-12">
+                        {/* <div className="col-12">
                             <div className="rui-sign-or mt-2 mb-5">or</div>
                         </div>
                         <div className="col-12">
@@ -271,7 +284,7 @@ class Content extends Component {
                                     </button>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="mt-20 text-grey-5">
@@ -287,4 +300,4 @@ export default connect( ( { auth, settings } ) => (
         auth,
         settings,
     }
-), { updateAuth: actionUpdateAuth } )( Content );
+), { updateAuth: actionUpdateAuth,addToast: actionAddToast } )( withRouter(Content ));
