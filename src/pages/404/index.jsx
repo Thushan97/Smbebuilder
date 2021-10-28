@@ -23,7 +23,7 @@ class NotFoundPage extends Component {
                         '/': 'Home',
                     } }
                 >
-                    <h1>404</h1>
+                    <p>404</p>
                 </PageTitle>
                 <PageContent>
                     <AsyncComponent component={ () => import( './content' ) } />

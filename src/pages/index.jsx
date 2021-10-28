@@ -11,7 +11,7 @@ import Dashboard from './Dashboard';
 // Apps
 import Mailbox from './Mailbox';
 import Messenger from './Messenger';
-import Calendar from './Calendar';
+import Plans from './Plans';
 import ProjectManagement from './ProjectManagement';
 import Task from './Task';
 import FileManager from './FileManager';
@@ -79,7 +79,7 @@ export default {
     // Apps
     '/mailbox': Mailbox,
     '/messenger': Messenger,
-    '/calendar': Calendar,
+    '/plans': Plans,
     '/project-management': ProjectManagement,
     '/task': Task,
     '/file-manager': FileManager,
