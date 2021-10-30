@@ -10,13 +10,14 @@ import AuthSignUp from "./AuthSignUp";
 import Dashboard from "./Dashboard";
 
 // Apps
-import Mailbox from "./Mailbox";
-import Messenger from "./Messenger";
-import Calendar from "./Calendar";
-import ProjectManagement from "./ProjectManagement";
-import Task from "./Task";
-import FileManager from "./FileManager";
-import Profile from "./Profile";
+import Mailbox from './Mailbox';
+import Messenger from './Messenger';
+import Plans from './Plans';
+import ProjectManagement from './ProjectManagement';
+import Task from './Task';
+import FileManager from './FileManager';
+import Profile from './Profile';
+
 
 // Content
 import Grid from "./Grid";
@@ -84,13 +85,13 @@ export default {
     "/": Dashboard,
 
     // Apps
-    "/mailbox": Mailbox,
-    "/messenger": Messenger,
-    "/calendar": Calendar,
-    "/project-management": ProjectManagement,
-    "/task": Task,
-    "/file-manager": FileManager,
-    "/profile": Profile,
+    '/mailbox': Mailbox,
+    '/messenger': Messenger,
+    '/plans': Plans,
+    '/project-management': ProjectManagement,
+    '/task': Task,
+    '/file-manager': FileManager,
+    '/profile': Profile,
 
     // Content
     "/grid": Grid,

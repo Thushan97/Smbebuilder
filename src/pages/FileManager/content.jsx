@@ -42,9 +42,10 @@ class Content extends Component {
                                 </button>
                             </div>
                             <div className="col-auto">
-                                <button type="button" className="btn btn-brand btn-sm btn-uniform btn-round">
+                                <label htmlFor="fileInput" className="btn btn-brand btn-sm btn-uniform btn-round">
                                     <Icon name="plus" />
-                                </button>
+                                </label>
+                                <input type="file" id="fileInput" style={ { display: "none" } }></input>
                             </div>
                         </div>
                     </div>

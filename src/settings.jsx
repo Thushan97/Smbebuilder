@@ -73,8 +73,8 @@ const settings = {
             name: 'Messenger',
             icon: 'message-circle',
         },
-        '/calendar': {
-            name: 'Calendar',
+        '/plans': {
+            name: 'Plans',
             icon: 'calendar',
         },
         '/project-management': {
@@ -273,7 +273,7 @@ const settings = {
         apps: {
             '/mailbox': 'Mailbox',
             '/messenger': 'Messenger',
-            '/calendar': 'Calendar',
+            '/plans': 'Plans',
             '/project-management': 'Project Management',
             '/file-manager': 'File Manager',
             '/profile': 'Profile',

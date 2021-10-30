@@ -14,20 +14,20 @@ import PageContent from '../../components/page-content';
 /**
  * Component
  */
-class CalendarPage extends Component {
+class PlansPage extends Component {
     render() {
         return (
             <PageWrap>
                 <PageTitle
                     breadcrumbs={ {
                         '/': 'Home',
-                        '/calendar': {
+                        '/plans': {
                             title: 'Apps',
                             sub: 'apps',
                         },
                     } }
                 >
-                    <h1>Calendar</h1>
+                    <h1>Plans</h1>
                 </PageTitle>
                 <PageContent>
                     <AsyncComponent component={ () => import( './content' ) } />
@@ -37,4 +37,4 @@ class CalendarPage extends Component {
     }
 }
 
-export default CalendarPage;
+export default PlansPage;
