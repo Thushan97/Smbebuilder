@@ -24,7 +24,6 @@ function Content(props) {
     const onClick = async () => {
         const res = await api.project.openProject();
         window.open(res.data, "_self");
-        console.log(res);
     };
 
     return (
@@ -54,7 +53,9 @@ function Content(props) {
                         />
                         <CardBody>
                             <CardTitle className="h2">Project 2</CardTitle>
-                            <Button color="brand">Open</Button>
+                            <Button onClick={onClick} color="brand">
+                                Open
+                            </Button>
                         </CardBody>
                     </Card>
                 </Col>
@@ -67,7 +68,9 @@ function Content(props) {
                         />
                         <CardBody>
                             <CardTitle className="h2">Project 3</CardTitle>
-                            <Button color="brand">Open</Button>
+                            <Button onClick={onClick} color="brand">
+                                Open
+                            </Button>
                         </CardBody>
                     </Card>
                 </Col>
