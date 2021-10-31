@@ -22,6 +22,6 @@ export default {
         getUser: () => getInstance().get("auth/user"),
     },
     project: {
-        openProject: (data) => getInstance().get("app"),
+        openProject: (data) => getInstance().get("project/open"),
     },
 };
