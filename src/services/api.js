@@ -24,4 +24,10 @@ export default {
     project: {
         openProject: (data) => getInstance().get("project/open"),
     },
+    plan: {
+        addPaln: (data) => getInstance().post("plan/createPlan", data),
+    },
+    template: {
+        getTemplates: () => getInstance().get("templates")
+    }
 };

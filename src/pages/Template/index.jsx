@@ -14,20 +14,20 @@ import PageContent from '../../components/page-content';
 /**
  * Component
  */
-class Mailbox extends Component {
+class Template extends Component {
     render() {
         return (
             <PageWrap>
                 <PageTitle
                     breadcrumbs={ {
                         '/': 'Home',
-                        '/mailbox': {
+                        '/templates': {
                             title: 'Apps',
                             sub: 'apps',
                         },
                     } }
                 >
-                    <h1>Mailbox</h1>
+                    <h1>Templates</h1>
                 </PageTitle>
                 <PageContent>
                     <AsyncComponent component={ () => import( './content' ) } />
@@ -37,4 +37,4 @@ class Mailbox extends Component {
     }
 }
 
-export default Mailbox;
+export default Template;

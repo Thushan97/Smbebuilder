@@ -64,9 +64,9 @@ const settings = {
         },
 
         // Apps
-        '/mailbox': {
+        '/templates': {
             label: 'Apps',
-            name: 'Mailbox',
+            name: 'Template',
             icon: 'send',
         },
         '/messenger': {
