@@ -10,7 +10,7 @@ import AuthSignUp from "./AuthSignUp";
 import Dashboard from "./Dashboard";
 
 // Apps
-import Template from './Template';
+import Mailbox from './Mailbox';
 import Messenger from './Messenger';
 import Plans from './Plans';
 import ProjectManagement from './ProjectManagement';
@@ -85,7 +85,7 @@ export default {
     "/": Dashboard,
 
     // Apps
-    '/templates': Template,
+    '/mailbox': Mailbox,
     '/messenger': Messenger,
     '/plans': Plans,
     '/project-management': ProjectManagement,

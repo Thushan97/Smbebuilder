@@ -20,14 +20,19 @@ export default {
         resetPassword: (data) =>
             getInstance().post("auth/reset-password", data),
         getUser: () => getInstance().get("auth/user"),
+        updateUser: (id,plan) => getInstance().get("auth/change-plan/"+id+"/"+plan),
     },
     project: {
         openProject: (data) => getInstance().get("project/open"),
+        getAllProjects: () => getInstance().get("project/allProjects"),
+        createProject: (data) =>
+            getInstance().post("project/createProject", data),
+        updateProject: (id, data) =>
+            getInstance().post("project/updateProject/" + id, data),
+        deleteProject: (id) => getInstance().post("project/delete/" + id),
     },
-    plan: {
-        addPaln: (data) => getInstance().post("plan/createPlan", data),
+    builder: {
+        getFileAccessToken: (id) =>
+            getInstance().get("builder/getFileAccessToken/" + id),
     },
-    template: {
-        getTemplates: () => getInstance().get("templates")
-    }
 };

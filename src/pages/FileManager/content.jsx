@@ -2,7 +2,6 @@
  * Styles
  */
 import './style.scss';
-// import axios from 'axios';
 
 /**
  * External Dependencies
@@ -20,24 +19,7 @@ import DataTables from '../../components/data-tables';
 /**
  * Component
  */
-
 class Content extends Component {
-    state = {
-        file: "",
-    }
-
-    async handleUploadImage() {
-        try {
-            // const response = await axios.post('/upload',this.state.file);
-        } catch ( ex ) {
-            
-        }
-    }
-
-    componentDidMount() {
-        this.handleUploadImage();
-    }
-    
     render() {
         return (
             <Fragment>
@@ -63,7 +45,7 @@ class Content extends Component {
                                 <label htmlFor="fileInput" className="btn btn-brand btn-sm btn-uniform btn-round">
                                     <Icon name="plus" />
                                 </label>
-                                <input type="file" id="fileInput" style={ { display: "none" } } onChange={ ( e ) => this.setState( e.target.files[ 0 ] ) }></input>
+                                <input type="file" id="fileInput" style={ { display: "none" } }></input>
                             </div>
                         </div>
                     </div>
