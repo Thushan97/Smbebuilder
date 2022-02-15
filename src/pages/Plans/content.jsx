@@ -32,7 +32,7 @@ export default function Content() {
                 <h3>Pro Plan</h3>
                 <h4>$7.99/mo</h4>
             </div>
-            {/* <div><a className="plugnpaid-4znzgakhe" href="https://plu.ug/l/6xpx5uohy"><button className="plugnpaidButton">Purchase</button></a><script src="https://plu.ug/n/nljldt-hy"></script></div> */}
+            <div><a className="plugnpaid-4znzgakhe" href="https://plu.ug/l/xoxpoc1h4"><button className="plugnpaidButton">Purchase</button></a></div>
             <button className="plugnpaidButton" onClick={()=>onClick("pro")}>Update Plan</button>
             <div className="plansScreenInfo">
                 <h3>Infinite Plan</h3>
