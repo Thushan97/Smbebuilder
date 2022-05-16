@@ -99,6 +99,9 @@ class Content extends Component {
                     });
                     return;
                 } else {
+                    sessionStorage.setItem("userType", res.data.user.type);
+                    sessionStorage.setItem("userId", res.data.user.id);
+                    sessionStorage.setItem("idToken", res.data.rui_auth_token);
                     updateAuth({
                         token: res.data.rui_auth_token,
                     });

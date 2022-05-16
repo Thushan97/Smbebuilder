@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * App Settings
  */
@@ -88,6 +89,14 @@ const settings = {
         '/profile': {
             name: 'Profile',
             icon: 'user',
+        },
+        '/users': {
+            name: 'Users',
+            icon: 'users'
+        },
+        '/templates': {
+            name: 'Templates',
+            icon: 'file'
         },
 
         // Content
@@ -277,6 +286,7 @@ const settings = {
             '/project-management': 'Project Management',
             '/file-manager': 'File Manager',
             '/profile': 'Profile',
+            '/users': 'Users'
         },
         content: {
             '/grid': 'Grid',

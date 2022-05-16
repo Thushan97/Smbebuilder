@@ -19,8 +19,8 @@ export default {
             getInstance().post("auth/forgot-password", data),
         resetPassword: (data) =>
             getInstance().post("auth/reset-password", data),
-        getUser: () => getInstance().get("auth/user"),
-        updateUser: (id,plan) => getInstance().get("auth/change-plan/"+id+"/"+plan),
+        updateUser: (id, plan) =>
+            getInstance().get(`auth/change-plan/${id}/${plan}`),
     },
     project: {
         openProject: (data) => getInstance().get("project/open"),
@@ -30,9 +30,26 @@ export default {
         updateProject: (id, data) =>
             getInstance().post("project/updateProject/" + id, data),
         deleteProject: (id) => getInstance().post("project/delete/" + id),
+        getAllTemplateProjects: () => getInstance().get("project/allTemplate"),
+        createTemplateProject: (data) =>
+            getInstance().post("project/createTemplateProject", data),
+        updateTemplate: (id, data) =>
+            getInstance().post("project/updateTemplate/" + id, data),
+        deleteTemplate: (id) =>
+            getInstance().post("project/deleteTemplate/" + id),
     },
     builder: {
         getFileAccessToken: (id) =>
             getInstance().get("builder/getFileAccessToken/" + id),
+        getTemplateAccessToken: (id, userId) =>
+            getInstance().get(
+                "builder/getTemplateAccessToken/" + id + "/" + userId
+            ),
+    },
+    user: {
+        getUser: () => getInstance().get("user/:id"),
+        getAllUsers: () => getInstance().get("users/all-users"),
+        editUser: (id, data) =>
+            getInstance().post("users/edit-user/" + id, data),
     },
 };

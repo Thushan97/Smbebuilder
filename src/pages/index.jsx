@@ -17,7 +17,9 @@ import ProjectManagement from './ProjectManagement';
 import Task from './Task';
 import FileManager from './FileManager';
 import Profile from './Profile';
-
+import Users from './Users';
+import EditUser from './Users/EditUser';
+import Template from './Template';
 
 // Content
 import Grid from "./Grid";
@@ -92,6 +94,9 @@ export default {
     '/task': Task,
     '/file-manager': FileManager,
     '/profile': Profile,
+    '/users': Users,
+    '/templates': Template,
+    '/users/edit-user': EditUser,
 
     // Content
     "/grid": Grid,

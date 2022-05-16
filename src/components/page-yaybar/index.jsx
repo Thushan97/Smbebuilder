@@ -1,26 +1,27 @@
+/* eslint-disable */
 /**
  * Styles
  */
-import './style.scss';
+import "./style.scss";
 
 /**
  * External Dependencies
  */
-import React, { Component } from 'react';
-import classnames from 'classnames/dedupe';
-import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import React, { Component } from "react";
+import classnames from "classnames/dedupe";
+import { connect } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { Row, Col } from "reactstrap";
 
 /**
  * Internal Dependencies
  */
-import '../../../../common-assets/js/yaybar/yaybar';
-import { initPluginYaybar } from '../../../../common-assets/js/rootui-parts/initPluginYaybar';
-import Dropdown from '../bs-dropdown';
-import Icon from '../icon';
+import "../../../../common-assets/js/yaybar/yaybar";
+import { initPluginYaybar } from "../../../../common-assets/js/rootui-parts/initPluginYaybar";
+import Dropdown from "../bs-dropdown";
+import Icon from "../icon";
 
-import { updateAuth as actionUpdateAuth } from '../../actions';
+import { updateAuth as actionUpdateAuth } from "../../actions";
 
 window.RootUI.initPluginYaybar = initPluginYaybar;
 
@@ -28,11 +29,11 @@ window.RootUI.initPluginYaybar = initPluginYaybar;
  * Component
  */
 class PageYaybar extends Component {
-    constructor( props ) {
-        super( props );
+    constructor(props) {
+        super(props);
 
-        this.renderSubmenus = this.renderSubmenus.bind( this );
-        this.logOut = this.logOut.bind( this );
+        this.renderSubmenus = this.renderSubmenus.bind(this);
+        this.logOut = this.logOut.bind(this);
     }
 
     componentDidMount() {
@@ -40,82 +41,94 @@ class PageYaybar extends Component {
     }
 
     logOut() {
-        const {
-            updateAuth,
-        } = this.props;
+        const { updateAuth } = this.props;
 
-        updateAuth( {
-            token: '',
-        } );
+        updateAuth({
+            token: "",
+        });
+        sessionStorage.removeItem("userType");
+        sessionStorage.removeItem("userId");
     }
 
-    renderSubmenus( nav, returnObject = false ) {
+    renderSubmenus(nav, returnObject = false) {
         let thereIsActive = false;
 
-        const result = Object.keys( nav ).map( ( url ) => {
-            const data = nav[ url ];
-            const isActive = window.location.hash === `#${ url }`;
+        const result = Object.keys(nav).map((url) => {
+            const data = nav[url];
+            const isActive = window.location.hash === `#${url}`;
             let isOpened = false;
 
-            if ( isActive ) {
+            if (isActive) {
                 thereIsActive = true;
             }
 
-            let sub = '';
-            if ( data.sub ) {
-                const subData = this.renderSubmenus( data.sub, true );
+            let sub = "";
+            if (data.sub) {
+                const subData = this.renderSubmenus(data.sub, true);
 
                 sub = (
                     <ul className="yay-submenu dropdown-triangle">
-                        { subData.content }
+                        {subData.content}
                     </ul>
                 );
 
-                if ( subData.thereIsActive ) {
+                if (subData.thereIsActive) {
                     isOpened = true;
                     thereIsActive = true;
                 }
             }
 
             return (
-                <React.Fragment key={ `${ url }-${ data.name }` }>
-                    { data.label ? (
-                        <li className="yay-label">{ data.label }</li>
-                    ) : '' }
-                    <li className={ classnames( {
-                        'yay-item-active': isActive,
-                        'yay-submenu-open': isOpened,
-                    } ) }>
-                        { data.name ? (
+                <React.Fragment key={`${url}-${data.name}`}>
+                    {data.label ? (
+                        <li className="yay-label">{data.label}</li>
+                    ) : (
+                        ""
+                    )}
+                    <li
+                        className={classnames({
+                            "yay-item-active": isActive,
+                            "yay-submenu-open": isOpened,
+                        })}
+                    >
+                        {data.name ? (
                             <NavLink
-                                to={ data.sub ? '#' : url }
-                                className={ data.sub ? 'yay-sub-toggle' : '' }
+                                to={data.sub ? "#" : url}
+                                className={data.sub ? "yay-sub-toggle" : ""}
                             >
-                                { data.icon ? (
+                                {data.icon ? (
                                     <>
                                         <span className="yay-icon">
-                                            <Icon name={ data.icon } />
+                                            <Icon name={data.icon} />
                                         </span>
-                                        <span>{ data.name }</span>
+                                        <span>{data.name}</span>
                                         <span className="rui-yaybar-circle" />
                                     </>
                                 ) : (
                                     data.name
-                                ) }
-                                { data.sub ? (
+                                )}
+                                {data.sub ? (
                                     <span className="yay-icon-collapse">
-                                        <Icon name="chevron-right" strokeWidth="1" className="rui-icon-collapse" />
+                                        <Icon
+                                            name="chevron-right"
+                                            strokeWidth="1"
+                                            className="rui-icon-collapse"
+                                        />
                                     </span>
-                                ) : '' }
+                                ) : (
+                                    ""
+                                )}
                             </NavLink>
-                        ) : '' }
-                        { sub }
+                        ) : (
+                            ""
+                        )}
+                        {sub}
                     </li>
                 </React.Fragment>
             );
-        } );
+        });
 
-        if ( returnObject ) {
+        if (returnObject) {
             return {
                 content: result,
                 thereIsActive,
@@ -126,20 +139,21 @@ class PageYaybar extends Component {
     }
 
     render() {
-        const {
-            settings,
-        } = this.props;
+        const { settings } = this.props;
 
         return (
             <>
-                <div className={
-                    classnames(
-                        'yaybar rui-yaybar yay-hide-to-small yay-gestures',
-                        settings.sidebar_dark && ! settings.night_mode ? 'rui-yaybar-dark' : '',
-                        settings.sidebar_static ? 'yay-static' : '',
-                        settings.sidebar_effect ? `yay-${ settings.sidebar_effect }` : '',
-                    )
-                }
+                <div
+                    className={classnames(
+                        "yaybar rui-yaybar yay-hide-to-small yay-gestures",
+                        settings.sidebar_dark && !settings.night_mode
+                            ? "rui-yaybar-dark"
+                            : "",
+                        settings.sidebar_static ? "yay-static" : "",
+                        settings.sidebar_effect
+                            ? `yay-${settings.sidebar_effect}`
+                            : ""
+                    )}
                 >
                     <div className="yay-wrap-menu">
                         <div className="yaybar-wrap">
@@ -148,21 +162,22 @@ class PageYaybar extends Component {
                                     <a href="../dashboard.html">
                                         <span
                                             className="yay-icon"
-                                            dangerouslySetInnerHTML={ { __html: require( '!svg-inline-loader!../../../../common-assets/images/logo-html-inherit.svg' ) } }
+                                            dangerouslySetInnerHTML={{
+                                                __html: require("!svg-inline-loader!../../../../common-assets/images/logo-html-inherit.svg"),
+                                            }}
                                         />
                                         <span>Switch to HTML</span>
                                         <span className="rui-yaybar-circle"></span>
                                     </a>
                                 </li>
 
-                                { this.renderSubmenus( settings.navigation_sidebar ) }
+                                {this.renderSubmenus(
+                                    settings.navigation_sidebar
+                                )}
 
                                 <li className="yay-label">Sign</li>
                                 <li>
-                                    <NavLink
-                                        to="#"
-                                        onClick={ this.logOut }
-                                    >
+                                    <NavLink to="#" onClick={this.logOut}>
                                         <span className="yay-icon">
                                             <Icon name="log-out" />
                                         </span>
@@ -176,22 +191,40 @@ class PageYaybar extends Component {
                     <div className="rui-yaybar-icons">
                         <Row className="no-gutters justify-content-around">
                             <Col xs="auto">
-                                <Link to={ settings.home_url } className="btn btn-custom-round">
+                                <Link
+                                    to={settings.home_url}
+                                    className="btn btn-custom-round"
+                                >
                                     <Icon name="settings" />
                                 </Link>
                             </Col>
                             <Col xs="auto">
-                                <Link to={ settings.home_url } className="btn btn-custom-round">
+                                <Link
+                                    to={settings.home_url}
+                                    className="btn btn-custom-round"
+                                >
                                     <Icon name="bell" />
                                 </Link>
                             </Col>
                             <Col xs="auto" className="d-flex mt-3">
-                                <Dropdown tag="li" direction="up" openOnHover showTriangle>
+                                <Dropdown
+                                    tag="li"
+                                    direction="up"
+                                    openOnHover
+                                    showTriangle
+                                >
                                     <Dropdown.Toggle className="btn btn-custom-round">
                                         <Icon name="plus-circle" />
                                     </Dropdown.Toggle>
 
-                                    <Dropdown.Menu tag="ul" className="dropdown-menu nav" modifiers={ { offset: { offset: '-30px' }, flip: false } }>
+                                    <Dropdown.Menu
+                                        tag="ul"
+                                        className="dropdown-menu nav"
+                                        modifiers={{
+                                            offset: { offset: "-30px" },
+                                            flip: false,
+                                        }}
+                                    >
                                         <li>
                                             <Link to="#" className="nav-link">
                                                 <Icon name="plus-circle" />
@@ -224,12 +257,18 @@ class PageYaybar extends Component {
                                 </Dropdown>
                             </Col>
                             <Col xs="auto">
-                                <Link to={ settings.home_url } className="btn btn-custom-round">
+                                <Link
+                                    to={settings.home_url}
+                                    className="btn btn-custom-round"
+                                >
                                     <Icon name="clock" />
                                 </Link>
                             </Col>
                             <Col xs="auto">
-                                <Link to={ settings.home_url } className="btn btn-custom-round">
+                                <Link
+                                    to={settings.home_url}
+                                    className="btn btn-custom-round"
+                                >
                                     <Icon name="heart" />
                                 </Link>
                             </Col>
@@ -242,8 +281,9 @@ class PageYaybar extends Component {
     }
 }
 
-export default connect( ( { settings } ) => (
-    {
+export default connect(
+    ({ settings }) => ({
         settings,
-    }
-), { updateAuth: actionUpdateAuth } )( PageYaybar );
+    }),
+    { updateAuth: actionUpdateAuth }
+)(PageYaybar);

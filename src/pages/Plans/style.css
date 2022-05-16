@@ -1,11 +1,11 @@
-.plansScreen{
+.plansScreen {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     padding: 20px;
     opacity: 0.8;
 }
 
-.plansScreen:hover{
+.plansScreen:hover {
     opacity: 1;
 }
 
@@ -18,8 +18,8 @@
     width: 120px;
     padding: 10px 20px;
     font-size: 1rem;
-    color: white;
-    background-color: blueviolet; 
+    color: black !important;
+    background-color: blueviolet;
     font-weight: 600;
     border: none;
     cursor: pointer;
